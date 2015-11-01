@@ -22,7 +22,11 @@ A nossa abordagem à arquitetura do *Terasology* será baseada no modelo de 4+1 
 <a name="logicalview"/>
 ## Vista Lógica
 
-É importante referir que para esta análise nos vamos focar apenas no [*engine*](https://github.com/andrelago13/Terasology/tree/master/engine/src/main/java/org/terasology) do jogo porque esse era o propósito inicial do projeto e porque a diversidade e quantidade de módulos existente reduz a importância da sua arquitetura, uma vez que os módulos apenas têm de ser feitos de forma a serem integrados no *engine*.
+É importante referir que para esta análise nos vamos focar apenas no [*engine*](https://github.com/andrelago13/Terasology/tree/master/engine/src/main/java/org/terasology) do jogo porque esse era o propósito inicial do projeto e porque a diversidade e quantidade de módulos existente reduz a importância da sua arquitetura, uma vez que os módulos apenas têm de ser feitos de forma a serem integrados no *engine*. Contudo, vamos abordar a arquitetura esperada dos módulos e a sua integração no *engine*.
+
+De acordo com o que é referido por *Immortius* (principal responsável pela arquitetura de software do projeto) [nesta thread](http://forum.terasology.org/threads/architecture-vision.690/) do fórum do *Terasology*, a arquitetura do projeto foi concebida da seguinte forma:
+
+![Terasology package diagram](/ESOF-docs/resources/packagediagram.png)
 
 <a name="implementationview"/>
 ## Vista de Implementação
