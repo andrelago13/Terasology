@@ -36,6 +36,8 @@ A nossa abordagem à arquitetura do *Terasology* será baseada no modelo de 4+1 
 O diagrama de distribuição em UML modela a distribuição física de artefatos em nós.
 ![Terasology deployment diagram](/ESOF-docs/resources/deploymentdiagram.png)
 
+Através do diagrama é possível perceber como se pode um dispositivo ligar a outro(s) para jogar o jogo. Começando pelo dispositivo PC que executa o *Terasology*, ele pode ligar-se apenas a um outro dispositivo - um servidor local ou um servidor dedicado. Ambos executam também o *Terasology* para permitir a ligação de novos dispositivos, contudo, eles podem estar ligados a mais do que um dispositivo. A diferença é que o servidor local apenas pode ser acedido por dispositivos na mesma rede, enquanto um servidor dedicado pode ser acedido em redes diferentes ligadas pela Internet. Para além disso, o servidor local pode jogar o jogo ao mesmo tempo que "difunde" a informação necessária para que outros se juntem à sessão, enquanto o servidor dedicado apenas disponibiliza esta mesma informação, sem jogar o jogo enquanto o faz. Por fim, cada um dos tipos de servidores pode ligar-se a um ambiente de execução de Java presente noutros computadores, uma vez que isto é necessário para aplicações em Java. Estes ambientes de execução também estão limitados a uma ligação apenas, seja a um servidor dedicado ou a um servidor local.
+
 <a name="group_contribution"/>
 ## Contribuição do Grupo
 
