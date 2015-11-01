@@ -28,6 +28,14 @@ De acordo com o que é referido por *Immortius* (principal responsável pela arq
 
 ![Terasology package diagram](/ESOF-docs/resources/packagediagram.png)
 
+No diagrama acima foram ocultadas as dependências entre todos os packages dos quais o package "*context*" é dependente por uma questão de simplicidade e porque não acrescentariam informação relevante para a análise da arquitetura do projeto. Para além disso, os módulos "moduleLoading", "moduleX", "moduleXassets" e "engineAPI" são módulos que não se encontram na realidade implementados mas que foram adicionados por nós para se perceber melhor a arquitetura planeada. A sua descrição é feita mais à frente.
+
+O package "game" representa o início do jogo, ou seja, as classes utilizadas na inicialização do programa. Este package seria responsável por guardar e carregar as definições (*settings*) do jogador. Este package utiliza então o package "engine" para dar início ao jogo, sendo que é este o package responsável por todas as ações do jogo, desde os mecanismos em si (colisões, audio, input), até aos menus do jogo e inclusão dos módulos. Esta é simbolizada pelo package "moduleLoading" que é uma funcionalidade utilizada pelo *engine* para carregar os módulos selecionados pelo utilizador na *GUI*. O package "moduleX" representa um módulo genérico. Cada módulo possui os seus próprios *assets* para além dos *assets* do *engine*. Para além disso, cada módulo pode depender de outros módulos de uma forma hierárquica que permita o carregamento dos vários módulos simultaneamente. O *engine* disponibiliza uma API (representada simbolicamente por "engineAPI") que permite aos módulos a utilização de várias funcionalidades do *engine* sem colocar em perigo a integridade do sistema ou a privacidade dos ficheiros dos utilizadores.
+
+O package "engine" utiliza o package "context" que gere a *state machine* implementada pelo *engine*, utilizando todos os restantes módulos para isso. É também importante referir que o package "world" possui uma camada inferior (o package "logic") que gere toda a lógica do jogo em si, confinando-a num só sítio.
+
+De uma forma geral, a arquitetura utilizada é adequada na medida em que separa as diferentes funcionalidades implementadas pelo *engine*, fornecendo ao mesmo tempo uma API de imensa utilizade aos módulos que mantém a consistência do sistema. Para além disso, a colocação dos módulos numa camada "externa" facilita o desenvolvimento dos módulos de uma forma (possivelmente) independente e segura.
+
 <a name="implementationview"/>
 ## Vista de Implementação
 
