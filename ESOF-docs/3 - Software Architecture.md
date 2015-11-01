@@ -25,7 +25,7 @@ A nossa abordagem à arquitetura do *Terasology* será baseada no modelo de 4+1 
 É importante referir que para esta análise nos vamos focar apenas no [*engine*](https://github.com/andrelago13/Terasology/tree/master/engine/src/main/java/org/terasology) do jogo porque esse era o propósito inicial do projeto e porque a diversidade e quantidade de módulos existente reduz a importância da sua arquitetura, uma vez que os módulos apenas têm de ser feitos de forma a serem integrados no *engine*. Contudo, vamos abordar a arquitetura esperada dos módulos e a sua integração no *engine*.
 
 De acordo com o que é referido por *Immortius* (principal responsável pela arquitetura de software do projeto) [nesta thread](http://forum.terasology.org/threads/architecture-vision.690/) do fórum do *Terasology*, a arquitetura do projeto foi concebida da seguinte forma:
-
+<a name="package_diagram"/>
 ![Terasology package diagram](/ESOF-docs/resources/packagediagram.png)
 
 No diagrama acima foram ocultadas as dependências entre todos os packages dos quais o package "*context*" é dependente por uma questão de simplicidade e porque não acrescentariam informação relevante para a análise da arquitetura do projeto. Para além disso, os módulos "moduleLoading", "moduleX", "moduleXassets" e "engineAPI" são módulos que não se encontram na realidade implementados mas que foram adicionados por nós para se perceber melhor a arquitetura planeada. A sua descrição é feita mais à frente.
@@ -38,6 +38,16 @@ De uma forma geral, a arquitetura utilizada é adequada na medida em que separa 
 
 <a name="implementationview"/>
 ## Vista de Implementação
+
+De seguida encontra-se a análise da arquitetura do projeto do ponto de vista da implementação, detalhando-se os principais componentes e interação entre eles no âmbito da disponibilização ou utilização de interfaces por parte destes.
+
+![Terasology package diagram](/ESOF-docs/resources/componentdiagram.png)
+
+Através do diagrama de componentes apresentado acima é percetível que a única interação que o jogo em si (a aplicação Java) faz é com a interface disponibilizada pelo *engine*, sendo este a "tratar" de tudo o resto. Em primeiro lugar, o engine dá uso aos métodos disponibilizados pelo carregador de módulos para incorporar no novo jogo os módulos definidos pelo utilizador. Para além disso, como também está apresentado, cada um dos módulos incluídos tem acesso à API disponibilizada pelo *engine* que lhes permite, como foi referido acima, aumentar as suas funcionalidades sem causar perigo à consistência e segurança do jogo. Para além disso, o *engine* utiliza a interface do "Contexto" para dar origem ao jogo em si, uma vez que é no "Contexto" que se encontram as dependências necessárias para que o jogo seja possível (física, *rendering*, entre outras, como é apresentado no [diagrama anterior](#package_diagram).
+
+Por fim, através da interface do "Contexto" é possível dar uso à interface disponibilizada pelo componente "Network", que por sua vez permite disponibilizar ou associar um jogo através da Internet ou rede local.
+
+Uma vez mais, a abordagem é a correta e é a que se encontra implementada no projeto. A arquitetura elaborada traz inúmeras vantagens no que diz respeito à modularização dos componentes do jogo bem como à separação de partes diferentes do jogo que podem ser trabalhadas e melhoradas separadamente com bastante facilidade.
 
 <a name="processview"/>
 ## Vista de Processo
