@@ -52,6 +52,12 @@ Uma vez mais, a abordagem é a correta e é a que se encontra implementada no pr
 <a name="processview"/>
 ## Vista de Processo
 
+Através do diagrama de atividades do *Terasology* é fácil perceber a sequência de processos que uma sessão de jogo pode conter:
+
+![Terasology activity diagram](/ESOF-docs/resources/activitydiagram.png)
+
+Como se encontra apresentado no diagrama, o início do jogo passa por inicializar o *engine* do jogo que, por sua vez, cria o contexto (*context*). O contexto é responsável por interagir com todos os restantes componentes do jogo, desde GUI a *rendering* ou carregamento de módulos. Nesta fase inicial, como o passo seguinte é inicializar a GUI que permite o uso do Menu, apenas essas interações são necessárias. Depois de inicializada a GUI, há a seleção do modo de jogo (*local singleplayer*, *online multiplayer*, ...) e dos módulos a carregar. Esta informação é passada ao "Context" que trata de interagir com o carregador de módulos para carregar os módulos indicados, interagindo também com outros componentes que são necessários, por exemplo, para o modo de jogo (por exemplo, se o jogador quiser jogar através da Internet será necessária alguma interação com o módulo de *Network*). Começa então o jogo em si, onde a interação por parte do "Context" é máxima pois todos (ou quase todos) os restantes módulos (*rendering*, física, ...) são necessários para jogar o jogo, independentemente do modo. A partir do jogo é possível regressar ao menu inicial ou sair diretamente do jogo, chegando ao fim do processo. Também é possível terminar o jogo a partir do menu inicial.
+
 <a name="deploymentview"/>
 ## Vista de Distribuição
 
