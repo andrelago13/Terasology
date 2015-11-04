@@ -70,6 +70,6 @@ Através do diagrama é possível perceber como se pode um dispositivo ligar a o
 ## Contribuição do Grupo
 
  - [André Machado](https://github.com/andremachado94) (up201202865@fe.up.pt): 2 horas
- - [André Lago](https://github.com/andrelago13) (up201303313@fe.up.pt): 2 horas
- - [Gustavo Silva](https://github.com/gtugablue) (up201304143@fe.up.pt): 2 horas
+ - [André Lago](https://github.com/andrelago13) (up201303313@fe.up.pt): 10 horas
+ - [Gustavo Silva](https://github.com/gtugablue) (up201304143@fe.up.pt): 10 horas
  - [Marina Camilo](https://github.com/Aniiram) (up201307722@fe.up.pt): 2 horas
