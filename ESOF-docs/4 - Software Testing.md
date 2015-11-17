@@ -19,7 +19,11 @@ Ao longo deste relatório vamos analisar o *Terasology* no que diz respeito a te
 Tanto se analisarmos o *engine* como os módulos do **Terasology**, é claro que os testes apenas podem ser aplicados aos seus sub-componentes tendo em conta a grande complexidade e multifuncionalidade de qualquer um deles como um todo. Por exemplo, um módulo em específico, como o *rendering*, embora possua uma só grande funcionalidade (traduzir as informações do jogo para imagens visíveis), subdivide-se em diversas pequenas tarefas (representação das entidades como conjuntos de polígonos, cálculo da cor dos pixéis, etc.). Neste sentido, a análise do grau de testabilidade deve-se estender a pequenos sub-componentes do software para que se perceba exatamente o quão fácil e útil é testar o software.
 
 <a name="controlability"/>
+#### Controlabilidade
+
 No que diz respeito à controlabilidade dos componentes sob teste (CUT - Component Under Test) é aparente que depende do componente em si. Isto é, quando se trata de um componente do *engine*, é provável que apresente controlabilidade reduzida uma vez que o engine interage com uma quantidade muito grande de módulos, logo, é mais difícil de prever para alguns casos quais são todas as situações possíveis. Por outro lado, um componente de um módulo deverá apresentar uma controlabilidade mais elevada pois a sua interação limita-se a outros componentes do módulo (ou, em alguns casos, outros módulos externos ao jogo) e ao *engine* em si. Deste modo, a controlabilidade mais elevada (por norma) dos componentes dos módulos torna mais fácil a execução de testes nestes em relação a alguns componentes do *engine*. Contudo, componentes mais "interiores" do *engine* poderão apresentar a mesma facilidade (quando considerada apenas a controlabilidade) uma vez que possuem interações mais limitadas e funcionalidades mais concentradas.
+
+#### Observabilidade
 
 O **Terasology** utiliza uma ferramenta de testes automáticos chamada [*Jenkins*](https://jenkins-ci.org/), através da qual é possível efetuar os testes unitários em JUnit presentes no projeto sempre qe há uma *build* do projeto ou uma *pull request*. Assim, através da [página do **Terasology do *Jenkins*](http://jenkins.terasology.org/job/Terasology/) e da respetiva [página de estatísticas](http://jenkins.terasology.org/view/Statistics/) é fácil de perceber os resultados dos testes unitários. A página de estatísticas permite ver os resultados, quantidade e cobertura dos testes realizados aos diferentes módulos do projeto. Para além disso, a página principal permite a visualização de forma simples (através dos gráficos ilustrados ao longo do lado direito da página) de algumas informações relativas aos testes efetuados, das quais se destacam:
 
@@ -30,15 +34,21 @@ O **Terasology** utiliza uma ferramenta de testes automáticos chamada [*Jenkins
 
 Assim, concluímos que a observabilidade dos resultados dos testes, quando aplicados nestes módulos "principais" do projeto, é excelente pois é de fácil interpretação e porque é fácil, através do *Jenkins*, perceber a origem das diversas falhas possíveis. No caso dos módulos desenvolvidos por contribuidores externos, os testes são algo facultativo, ou seja, da inteira responsabilidade do seu autor, pelo que a sua observabilidade depende também da técnica usada para os implementar.
 
+#### Isolabilidade
+
 A isolabilidade do *CUT* em questão está um pouco relacionada com a sua controlabilidade. A forma como um componente pode ser testado de forma isolada ou independente depende da forma como ele se relaciona com outros módulos, ou mesmo da forma como depende deles. Por exemplo, quando se pretende testar uma função de um módulo A que utiliza uma outra função do módulo B, o sucesso dos testes realizados à função de A depende não só do código dessa mesma função como da função do módulo B, ou seja, os testes podem falhar mesmo que o código da função de A esteja completamente correto. Assim, determinar um grau geral de isolabilidade para o código do projeto seria incorreto pois é impossível de prever em que casos a isolabilidade é ou não ideal, contudo, a isolabilidade dos componentes sob teste é provávelmente maior nos módulos em comparação com o *engine* em si pelos mesmos motivos apresentados no [parágrafo sobre controlabilidade](#controlability).
+
+#### Separação de responsabilidades
 
 A separação de responsabilidades entre módulos está bastante bem definida (como foi referido no [relatório anterior](https://github.com/andrelago13/Terasology/blob/master/ESOF-docs/3%20-%20Software%20Architecture.md). Cada um dos módulos principais possui uma tarefa (ou conjunto de tarefas) da qual é responsável, contudo, essa tarefa apresenta muitas vezes uma complexidade elevada (por exemplo, tal como já foi referido, a tarefa de *rendering* embora seja uma só apresenta uma elevada complexidade pela variedade e dificuldade dos sub-problemas que engloba). Assim, consideramos que a separação de responsabilidades é feita de uma forma correta no **Terasology** uma vez que tarefas grandes são designadas a módulos específicos que repartem as tarefas em sub-problemas resolvidos no seu interior.
 
+#### Documentação e facilidade de leitura
+
 A maior parte dos módulos do **Terasology**, principalmente o *engine* e os 80 módulos principais, encontram-se bem documentados, principalmente nas partes de código que não se classifica como auto-explicativo. Embora existam falhas na *wiki* do projeto, ou zonas que ainda não foram propriamente documentadas (tal como é referido em [algumas *issues*](https://github.com/MovingBlocks/Terasology/issues) do projeto, a documentação do código é geralmente vasta e completa, pois de outra forma seria muito difícil a compreensão do código por parte de contribuidores externos. A relativamente grande quantidade de contribuidores externos, aliada à diversidade de módulos criados por esses mesmos contribuidores, comprova em parte a qualidade e diversidade da documentação do código das partes essenciais e mais "públicas" do projeto.
 
-
-
 # TODO
+#### Heterogeneidade de tecnologias e métodos
+
 The testability of software components (modules, classes) is determined by factors such as:
 - Controllability: The degree to which it is possible to control the state of the component under test (CUT) as required for testing.
 - Observability: The degree to which it is possible to observe (intermediate and final) test results.
@@ -50,10 +60,17 @@ The testability of software components (modules, classes) is determined by facto
 <a name="teststatistics"/>
 ## Estatísticas de Teste
 
-# TODO
- Number of tests (# tests unitários; # tests de sistema, # tests de desempenho, ...)
-     % coverage (given by tools like EclEmma)
-     Code coverage: is it any good? (see http://avandeursen.com/2013/11/19/test-coverage-not-for-managers/)
+As estatísticas relativas aos testes automáticos realizados no Jenkins do *Terasology* podem ser consultadas na [respetiva página](http://jenkins.terasology.org/view/Statistics/), já referida. Deve-se notar que os testes a que nos referimos dizem respeito ao *engine* e a alguns outros módulos.
+
+Número de testes unitários automáticos: 2047
+Percentagem de cobertura geral do projeto: 25,45%
+Percentagem de cobertura no módulo principaç (Terasology): 25,75%
+Melhor percentagem de cobertura (NanoMarkovChains): 93,65%
+Pior percentagem de cobertura maior que 0% (TerasologyStable): 19,72%
+
+A maior parte dos testes são referentes ao *engine* e outros módulos mais essenciais do jogo, sendo que a maior parte dos módulos, mesmo alguns dos 80 principais, não possui testes implementados. Isto é um grande defeito do projeto pois dificulta a validação do código de novos módulos, e mesmo de alterações aos módulos já existentes, contudo, o principal responsável pela área mais técnica do projeto ([Cervator](https://github.com/Cervator)) admite [nesta thread do fórum do *Terasology*](http://forum.terasology.org/threads/development-methodology-and-hi-students-from-porto.1387/) que fazer mais e melhores testes é um dos objetivos atuais do projeto, mas que a sua execução não é de todo fácil por não haver ninguém dedicado a tempo inteiro ao projeto.
+
+De qualquer modo, a cobertura geral dos testes nos módulos onde estes foram implementados é atualmente má, pelo que deverá ser feito um esforço para aumentar a quantidade e talvez qualidade de testes.
 
 <a name="bugreportsolution"/>
 ## Bug Report Resolvido
