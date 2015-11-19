@@ -82,6 +82,7 @@ Foi resolvido o *bug* [#1633](https://github.com/MovingBlocks/Terasology/issues/
 <a name="bugreportsolution_info"/>
 ### Informação
 O *bug* podia ser reproduzido da seguinte forma:
+
 1. Entrar num local com água, pelo menos 2 blocos de profundidade e adjacente a blocos não líquidos.
 2. "Cavar" os dois blocos adjacentes à água.
 3. Sair da água diretamente para o espaço adjacente criado, sem emergir.
