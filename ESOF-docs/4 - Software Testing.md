@@ -6,6 +6,9 @@
 2. [Grau de Testabilidade](#degreeoftestability)
 3. [Estatísticas de Teste](#teststatistics)
 4. [Bug Report Resolvido](#bugreportsolution)
+  1. [Informação](#bugreportsolution_info)
+  2. [Resolução](#bugreportsolution_solving)
+  3. [*Pull Request*](#bugreportsolution_pr)
 5. [Contribuição do Grupo](#group_contribution)
 
 <a name="introduction"/>
@@ -81,14 +84,38 @@ De qualquer modo, a cobertura geral dos testes nos módulos onde estes foram imp
 
 <a name="bugreportsolution"/>
 ## Bug Report Resolvido
+Foi resolvido o *bug* [#1633](https://github.com/MovingBlocks/Terasology/issues/1633), listado nas *issues* do projeto Terasology e que faz parte da *milestone* "v1.0.0" (primeiro lançamento real do *engine*).
 
-# TODO
-3) [Opcional] Take a bug report, create test cases to reproduce it, and fix it, eventually using automated software fault diagnosis techniques. (grade >18)
+<a name="bugreportsolution_info"/>
+### Informação
+O *bug* podia ser reproduzido da seguinte forma:
+
+1. Entrar num local com água, pelo menos 2 blocos de profundidade e adjacente a blocos não líquidos.
+2. "Cavar" os dois blocos adjacentes à água.
+3. Sair da água diretamente para o espaço adjacente criado, sem emergir.
+
+O resultado esperado seria o jogador voltar a ter movimento normal (andar). No entanto, o que se verificava é que o jogador continuava a nadar apesar de já não estar em água. Isto permitia inclusivamente voar pelo mundo.
+
+<a name="bugreportsolution_solving"/>
+### Resolução
+A metodologia de resolução do *bug* passou pela aplicação do ciclo de desenvolvimento do *Test-Driven Development*.
+Primeiro, foram criados testes unitários para reproduzir a falha. Para isso, foi criada a classe [KinematicCharacterMoveTest](https://github.com/MovingBlocks/Terasology/blob/fedae81b0a2579f054a8e95362d3ca0e6722797f/engine-tests/src/test/java/org/terasology/logic/characters/KinematicCharacterMoverTest.java).
+
+![Teste a falhar](/ESOF-docs/resources/test_failing.png "Teste a falhar")
+
+Após efetuar alterações ao código para eliminar o *bug*, correu-se novamente os testes e verificou-se que estes passaram com sucesso.
+
+<a name="bugreportsolution_pr"/>
+### *Pull Request*
+
+Após a resolução do bug foi efetuado um [*commit*](https://github.com/MovingBlocks/Terasology/commit/fedae81b0a2579f054a8e95362d3ca0e6722797f) e um [*Pull Request*](https://github.com/MovingBlocks/Terasology/pull/2011) para o repositório original do projeto. O código foi testado automaticamente pelo sistema *Jenkins* e passou sem falhas nos testes. As informações sobre a *build* podem ser consultadas aqui: http://jenkins.terasology.org/job/TerasologyPRs/310/.
+
+O *Pull Request* foi aceite e foi feito *merge* com o *developer branch*: https://github.com/MovingBlocks/Terasology/pull/2011
 
 <a name="group_contribution"/>
 ## Contribuição do Grupo
 
  - [André Machado](https://github.com/andremachado94) (up201202865@fe.up.pt): x horas
  - [André Lago](https://github.com/andrelago13) (up201303313@fe.up.pt): x horas
- - [Gustavo Silva](https://github.com/gtugablue) (up201304143@fe.up.pt): x horas
+ - [Gustavo Silva](https://github.com/gtugablue) (up201304143@fe.up.pt): 8 horas
  - [Marina Camilo](https://github.com/Aniiram) (up201307722@fe.up.pt): x horas
