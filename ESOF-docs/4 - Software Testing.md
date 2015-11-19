@@ -92,7 +92,7 @@ A estratégia de design utilizada para os testes é a de *"White-box"* uma vez q
 <a name="group_contribution"/>
 ## Contribuição do Grupo
 
- - [André Machado](https://github.com/andremachado94) (up201202865@fe.up.pt): x horas
- - [André Lago](https://github.com/andrelago13) (up201303313@fe.up.pt): x horas
- - [Gustavo Silva](https://github.com/gtugablue) (up201304143@fe.up.pt): x horas
- - [Marina Camilo](https://github.com/Aniiram) (up201307722@fe.up.pt): x horas
+ - [André Machado](https://github.com/andremachado94) (up201202865@fe.up.pt): 0 horas
+ - [André Lago](https://github.com/andrelago13) (up201303313@fe.up.pt): 10 horas
+ - [Gustavo Silva](https://github.com/gtugablue) (up201304143@fe.up.pt): 10 horas
+ - [Marina Camilo](https://github.com/Aniiram) (up201307722@fe.up.pt): 0 horas
