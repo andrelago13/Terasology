@@ -70,7 +70,7 @@ No caso deste projeto, a utilização destas ferramentas não deverá causar pro
 <a name="teststatistics"/>
 ## Estatísticas de Teste
 
-As estatísticas relativas aos testes automáticos realizados no Jenkins do *Terasology* podem ser consultadas na [respetiva página](http://jenkins.terasology.org/view/Statistics/), já referida. Deve-se notar que os testes a que nos referimos dizem respeito ao *engine* e a alguns outros módulos.
+As estatísticas relativas aos testes unitários automáticos realizados no Jenkins do *Terasology* podem ser consultadas na [respetiva página](http://jenkins.terasology.org/view/Statistics/), já referida. Deve-se notar que os testes a que nos referimos dizem respeito ao *engine* e a alguns outros módulos.
 
 - Número de testes unitários automáticos: 2047
 - Percentagem de cobertura geral do projeto: 25,45%
@@ -78,9 +78,13 @@ As estatísticas relativas aos testes automáticos realizados no Jenkins do *Ter
 - Melhor percentagem de cobertura (NanoMarkovChains): 93,65%
 - Pior percentagem de cobertura maior que 0% (TerasologyStable): 19,72%
 
-A maior parte dos testes são referentes ao *engine* e outros módulos mais essenciais do jogo, sendo que a maior parte dos módulos, mesmo alguns dos 80 principais, não possui testes implementados. Isto é um grande defeito do projeto pois dificulta a validação do código de novos módulos, e mesmo de alterações aos módulos já existentes, contudo, o principal responsável pela área mais técnica do projeto ([Cervator](https://github.com/Cervator)) admite [nesta thread do fórum do *Terasology*](http://forum.terasology.org/threads/development-methodology-and-hi-students-from-porto.1387/) que fazer mais e melhores testes é um dos objetivos atuais do projeto, mas que a sua execução não é de todo fácil por não haver ninguém dedicado a tempo inteiro ao projeto.
+A maior parte dos testes são testes de desempenho ou de sistema, sendo referentes ao *engine* e outros módulos mais essenciais do jogo, sendo que a maior parte dos módulos, mesmo alguns dos 80 principais, não possui testes implementados. Isto é um grande defeito do projeto pois dificulta a validação do código de novos módulos, e mesmo de alterações aos módulos já existentes, contudo, o principal responsável pela área mais técnica do projeto ([Cervator](https://github.com/Cervator)) admite [nesta thread do fórum do *Terasology*](http://forum.terasology.org/threads/development-methodology-and-hi-students-from-porto.1387/) que fazer mais e melhores testes é um dos objetivos atuais do projeto, mas que a sua execução não é de todo fácil por não haver ninguém dedicado a tempo inteiro ao projeto.
 
 De qualquer modo, a cobertura geral dos testes nos módulos onde estes foram implementados é atualmente má, pelo que deverá ser feito um esforço para aumentar a quantidade e talvez qualidade de testes.
+
+Os testes de integração com módulos e bibliotecas são normalmente feitos manualmente pelo responsável do projeto (ou pelo responsável por essa parte específica do projeto), contudo esta tarefa é feita com pouca frequência por falta de tempo disponível para alocar. Isto pode ser prejudicial para o projeto pois testes de intergração são importantes sempre que se utilizam interfaces entre sistemas, bibliotecas ou tecnologias diferentes.
+
+A estratégia de design utilizada para os testes é a de *"White-box"* uma vez que não há especificações externas para os requisitos dos testes e porque os testes vão sendo adicionados gradualmente consoante haja tempo para o fazer, necessidade de testar algum software ou hajam falhas cuja origem é desconhecida. Esta técnica é provavelmente a mais adequada a este projeto tendo em conta a sua dimensão, o seu objetivo e o tempo que cada contribuidor pode dispensar para o projeto.
 
 <a name="bugreportsolution"/>
 ## Bug Report Resolvido
@@ -115,7 +119,14 @@ O *Pull Request* foi aceite e foi feito *merge* com o *developer branch*: https:
 <a name="group_contribution"/>
 ## Contribuição do Grupo
 
+<<<<<<< HEAD
  - [André Machado](https://github.com/andremachado94) (up201202865@fe.up.pt): x horas
  - [André Lago](https://github.com/andrelago13) (up201303313@fe.up.pt): x horas
  - [Gustavo Silva](https://github.com/gtugablue) (up201304143@fe.up.pt): 8 horas
  - [Marina Camilo](https://github.com/Aniiram) (up201307722@fe.up.pt): x horas
+=======
+ - [André Machado](https://github.com/andremachado94) (up201202865@fe.up.pt): 0 horas
+ - [André Lago](https://github.com/andrelago13) (up201303313@fe.up.pt): 10 horas
+ - [Gustavo Silva](https://github.com/gtugablue) (up201304143@fe.up.pt): 10 horas
+ - [Marina Camilo](https://github.com/Aniiram) (up201307722@fe.up.pt): 0 horas
+>>>>>>> refs/remotes/origin/Andre
