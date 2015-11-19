@@ -4,6 +4,12 @@
 ## Índice
 1. [Introdução](#introduction)
 2. [Grau de Testabilidade](#degreeoftestability)
+  1. [Controlabilidade](#controlability)
+  2. [Observabilidade](#observability)
+  3. [Isolabilidade](#isolability)
+  4. [Separação de Responsabilidades](#concernseparation)
+  5. [Documentação e facilidade de leitura](#documentation)
+  6. [Heterogeneidade de tecnologias e métodos](#heterogeinity)
 3. [Estatísticas de Teste](#teststatistics)
 4. [Bug Report Resolvido](#bugreportsolution)
   1. [Informação](#bugreportsolution_info)
@@ -26,6 +32,7 @@ Tanto se analisarmos o *engine* como os módulos do **Terasology**, é claro que
 
 No que diz respeito à controlabilidade dos componentes sob teste (CUT - Component Under Test) é aparente que depende do componente em si. Isto é, quando se trata de um componente do *engine*, é provável que apresente controlabilidade reduzida uma vez que o engine interage com uma quantidade muito grande de módulos, logo, é mais difícil de prever para alguns casos quais são todas as situações possíveis. Por outro lado, um componente de um módulo deverá apresentar uma controlabilidade mais elevada pois a sua interação limita-se a outros componentes do módulo (ou, em alguns casos, outros módulos externos ao jogo) e ao *engine* em si. Deste modo, a controlabilidade mais elevada (por norma) dos componentes dos módulos torna mais fácil a execução de testes nestes em relação a alguns componentes do *engine*. Contudo, componentes mais "interiores" do *engine* poderão apresentar a mesma facilidade (quando considerada apenas a controlabilidade) uma vez que possuem interações mais limitadas e funcionalidades mais concentradas.
 
+<a name="observability"/>
 #### Observabilidade
 
 O **Terasology** utiliza uma ferramenta de testes automáticos chamada [*Jenkins*](https://jenkins-ci.org/), através da qual é possível efetuar os testes unitários em JUnit presentes no projeto sempre qe há uma *build* do projeto ou uma *pull request*. Assim, através da [página do **Terasology do *Jenkins*](http://jenkins.terasology.org/job/Terasology/) e da respetiva [página de estatísticas](http://jenkins.terasology.org/view/Statistics/) é fácil de perceber os resultados dos testes unitários. A página de estatísticas permite ver os resultados, quantidade e cobertura dos testes realizados aos diferentes módulos do projeto. Para além disso, a página principal permite a visualização de forma simples (através dos gráficos ilustrados ao longo do lado direito da página) de algumas informações relativas aos testes efetuados, das quais se destacam:
@@ -37,18 +44,22 @@ O **Terasology** utiliza uma ferramenta de testes automáticos chamada [*Jenkins
 
 Assim, concluímos que a observabilidade dos resultados dos testes, quando aplicados nestes módulos "principais" do projeto, é excelente pois é de fácil interpretação e porque é fácil, através do *Jenkins*, perceber a origem das diversas falhas possíveis. No caso dos módulos desenvolvidos por contribuidores externos, os testes são algo facultativo, ou seja, da inteira responsabilidade do seu autor, pelo que a sua observabilidade depende também da técnica usada para os implementar.
 
+<a name="isolability"/>
 #### Isolabilidade
 
 A isolabilidade do *CUT* em questão está um pouco relacionada com a sua controlabilidade. A forma como um componente pode ser testado de forma isolada ou independente depende da forma como ele se relaciona com outros módulos, ou mesmo da forma como depende deles. Por exemplo, quando se pretende testar uma função de um módulo A que utiliza uma outra função do módulo B, o sucesso dos testes realizados à função de A depende não só do código dessa mesma função como da função do módulo B, ou seja, os testes podem falhar mesmo que o código da função de A esteja completamente correto. Assim, determinar um grau geral de isolabilidade para o código do projeto seria incorreto pois é impossível de prever em que casos a isolabilidade é ou não ideal, contudo, a isolabilidade dos componentes sob teste é provávelmente maior nos módulos em comparação com o *engine* em si pelos mesmos motivos apresentados no [parágrafo sobre controlabilidade](#controlability).
 
+<a name="concernseparation"/>
 #### Separação de responsabilidades
 
 A separação de responsabilidades entre módulos está bastante bem definida (como foi referido no [relatório anterior](https://github.com/andrelago13/Terasology/blob/master/ESOF-docs/3%20-%20Software%20Architecture.md). Cada um dos módulos principais possui uma tarefa (ou conjunto de tarefas) da qual é responsável, contudo, essa tarefa apresenta muitas vezes uma complexidade elevada (por exemplo, tal como já foi referido, a tarefa de *rendering* embora seja uma só apresenta uma elevada complexidade pela variedade e dificuldade dos sub-problemas que engloba). Assim, consideramos que a separação de responsabilidades é feita de uma forma correta no **Terasology** uma vez que tarefas grandes são designadas a módulos específicos que repartem as tarefas em sub-problemas resolvidos no seu interior.
 
+<a name="documentation"/>
 #### Documentação e facilidade de leitura
 
 A maior parte dos módulos do **Terasology**, principalmente o *engine* e os 80 módulos principais, encontram-se bem documentados, principalmente nas partes de código que não se classifica como auto-explicativo. Embora existam falhas na *wiki* do projeto, ou zonas que ainda não foram propriamente documentadas (tal como é referido em [algumas *issues*](https://github.com/MovingBlocks/Terasology/issues) do projeto, a documentação do código é geralmente vasta e completa, pois de outra forma seria muito difícil a compreensão do código por parte de contribuidores externos. A relativamente grande quantidade de contribuidores externos, aliada à diversidade de módulos criados por esses mesmos contribuidores, comprova em parte a qualidade e diversidade da documentação do código das partes essenciais e mais "públicas" do projeto.
 
+<a name="heterogeinity"/>
 #### Heterogeneidade de tecnologias e métodos
 
 O *Terasology* é um projeto com grande heterogeneidade na medida em que utiliza várias tecnologias externas para tornar o jogo possível. As principais tecnologias utilizadas estão listadas na [lista de dependências](https://github.com/MovingBlocks/Terasology/blob/develop/engine/build.gradle#L94) do ficheiro que permite a compilação do código do *Terasology* em conjunto com as bibliotecas que utiliza, sendo que as principais são:
@@ -119,14 +130,7 @@ O *Pull Request* foi aceite e foi feito *merge* com o *developer branch*: https:
 <a name="group_contribution"/>
 ## Contribuição do Grupo
 
-<<<<<<< HEAD
- - [André Machado](https://github.com/andremachado94) (up201202865@fe.up.pt): x horas
- - [André Lago](https://github.com/andrelago13) (up201303313@fe.up.pt): x horas
- - [Gustavo Silva](https://github.com/gtugablue) (up201304143@fe.up.pt): 8 horas
- - [Marina Camilo](https://github.com/Aniiram) (up201307722@fe.up.pt): x horas
-=======
  - [André Machado](https://github.com/andremachado94) (up201202865@fe.up.pt): 0 horas
- - [André Lago](https://github.com/andrelago13) (up201303313@fe.up.pt): 10 horas
- - [Gustavo Silva](https://github.com/gtugablue) (up201304143@fe.up.pt): 10 horas
+ - [André Lago](https://github.com/andrelago13) (up201303313@fe.up.pt): 9 horas
+ - [Gustavo Silva](https://github.com/gtugablue) (up201304143@fe.up.pt): 9 horas
  - [Marina Camilo](https://github.com/Aniiram) (up201307722@fe.up.pt): 0 horas
->>>>>>> refs/remotes/origin/Andre
