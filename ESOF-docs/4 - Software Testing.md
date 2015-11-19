@@ -46,27 +46,34 @@ A separação de responsabilidades entre módulos está bastante bem definida (c
 
 A maior parte dos módulos do **Terasology**, principalmente o *engine* e os 80 módulos principais, encontram-se bem documentados, principalmente nas partes de código que não se classifica como auto-explicativo. Embora existam falhas na *wiki* do projeto, ou zonas que ainda não foram propriamente documentadas (tal como é referido em [algumas *issues*](https://github.com/MovingBlocks/Terasology/issues) do projeto, a documentação do código é geralmente vasta e completa, pois de outra forma seria muito difícil a compreensão do código por parte de contribuidores externos. A relativamente grande quantidade de contribuidores externos, aliada à diversidade de módulos criados por esses mesmos contribuidores, comprova em parte a qualidade e diversidade da documentação do código das partes essenciais e mais "públicas" do projeto.
 
-# TODO
 #### Heterogeneidade de tecnologias e métodos
 
-The testability of software components (modules, classes) is determined by factors such as:
-- Controllability: The degree to which it is possible to control the state of the component under test (CUT) as required for testing.
-- Observability: The degree to which it is possible to observe (intermediate and final) test results.
-- Isolateability: The degree to which the component under test (CUT) can be tested in isolation.
-- Separation of concerns: The degree to which the component under test has a single, well defined responsibility.
-- Understandability: The degree to which the component under test is documented or self-explaining.
-- Heterogeneity: The degree to which the use of diverse technologies requires to use diverse test methods and tools in parallel.
+O *Terasology* é um projeto com grande heterogeneidade na medida em que utiliza várias tecnologias externas para tornar o jogo possível. As principais tecnologias utilizadas estão listadas na [lista de dependências](https://github.com/MovingBlocks/Terasology/blob/develop/engine/build.gradle#L94) do ficheiro que permite a compilação do código do *Terasology* em conjunto com as bibliotecas que utiliza, sendo que as principais são:
+- [*Lightweight Java Game Library*](https://www.lwjgl.org/) (LWJGL) - uma biblioteca de Java que fornece, entre outras funcionalidades, uma API para aplicações com interface/processamento gráfico.
+- [Jinput](https://java.net/projects/jinput) - uma API de Java para controladores de jogos.
+
+Para além destas, são também utilizadas outras tecnologias que facilitam ou realizam outras tarefas relacionadas com o jogo, entre as quais:
+- Armazenamento e *networking* - "guava", "gson", "protobuf-java", "trove4j", "netty".
+- Funcionalidades específicas de Java - "jna-platform", "reflections", "javassist", "reflectasm".
+- Gráficos 3D, UI e outros - "lwjgl_util", "java3d", "abego.treelayout.core", "miglayout-core", "PNGDecoder".
+- *Logging* e audio - "slf4j-api", "jorbis".
+- Outras bibliotecas pequenas de terceiros - "MersenneTwister", "eaxy".
+- <a name="terasologylibs"/>Bibliotecas desenvolvidas pelo *Terasology* - "gestalt-module", "gestalt-asset-core", "TeraMath", "tera-bullet", "splash-screen".
+
+A utilização de ferramentas externas tem sempre a vantagem de evitar o trabalho de implementar as funcionalidades que elas fornecem, mas também traz algumas adversidades. No caso dos testes, a utilização de bibliotecas, principalmente quando não são têm a fiabilidade desejada, pode provocar necessidade de desenvolver métodos de teste que estejam preparados para a possibilidade de elas falharem. Na maior parte dos casos, principalmente quando se usam bibliotecas de grande renome (por exemplo a biblioteca JWJGL), isto não é um problema porque se parte do princípio que funcionam. Contudo, quando se utilizam bibliotecas menos fiáveis, ou que foram desenvolvidas no âmbito do projeto (tal como as que foram referidas [acima](#terasologylibs)), é necessário utilizar também testes que aumentem o grau de confiabilidade dessas bibliotecas, para se saber que, quando um teste ao código falha, essa falha pode ser causada pela biblioteca e não pelo código em si.
+
+No caso deste projeto, a utilização destas ferramentas não deverá causar problemas no que diz respeito aos testes uma vez que são maioritariamente provenientes de fontes seguras e fiáveis, exceto nas ferramentas desenvolvidas específicamente para o projeto. Nestes casos, devem ser feitos testes extensivos a estas bibliotecas para que não provoquem falhas nos programas que as usam.
 
 <a name="teststatistics"/>
 ## Estatísticas de Teste
 
 As estatísticas relativas aos testes automáticos realizados no Jenkins do *Terasology* podem ser consultadas na [respetiva página](http://jenkins.terasology.org/view/Statistics/), já referida. Deve-se notar que os testes a que nos referimos dizem respeito ao *engine* e a alguns outros módulos.
 
-Número de testes unitários automáticos: 2047
-Percentagem de cobertura geral do projeto: 25,45%
-Percentagem de cobertura no módulo principaç (Terasology): 25,75%
-Melhor percentagem de cobertura (NanoMarkovChains): 93,65%
-Pior percentagem de cobertura maior que 0% (TerasologyStable): 19,72%
+- Número de testes unitários automáticos: 2047
+- Percentagem de cobertura geral do projeto: 25,45%
+- Percentagem de cobertura no módulo principaç (Terasology): 25,75%
+- Melhor percentagem de cobertura (NanoMarkovChains): 93,65%
+- Pior percentagem de cobertura maior que 0% (TerasologyStable): 19,72%
 
 A maior parte dos testes são referentes ao *engine* e outros módulos mais essenciais do jogo, sendo que a maior parte dos módulos, mesmo alguns dos 80 principais, não possui testes implementados. Isto é um grande defeito do projeto pois dificulta a validação do código de novos módulos, e mesmo de alterações aos módulos já existentes, contudo, o principal responsável pela área mais técnica do projeto ([Cervator](https://github.com/Cervator)) admite [nesta thread do fórum do *Terasology*](http://forum.terasology.org/threads/development-methodology-and-hi-students-from-porto.1387/) que fazer mais e melhores testes é um dos objetivos atuais do projeto, mas que a sua execução não é de todo fácil por não haver ninguém dedicado a tempo inteiro ao projeto.
 
