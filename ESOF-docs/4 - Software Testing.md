@@ -64,6 +64,7 @@ A maior parte dos módulos do **Terasology**, principalmente o *engine* e os 80 
 
 O *Terasology* é um projeto com grande heterogeneidade na medida em que utiliza várias tecnologias externas para tornar o jogo possível. As principais tecnologias utilizadas estão listadas na [lista de dependências](https://github.com/MovingBlocks/Terasology/blob/develop/engine/build.gradle#L94) do ficheiro que permite a compilação do código do *Terasology* em conjunto com as bibliotecas que utiliza, sendo que as principais são:
 - [*Lightweight Java Game Library*](https://www.lwjgl.org/) (LWJGL) - uma biblioteca de Java que fornece, entre outras funcionalidades, uma API para aplicações com interface/processamento gráfico.
+- [*JUnit*](http://junit.org/) - biblioteca que facilita a realização de testes unitáros.
 - [Jinput](https://java.net/projects/jinput) - uma API de Java para controladores de jogos.
 
 Para além destas, são também utilizadas outras tecnologias que facilitam ou realizam outras tarefas relacionadas com o jogo, entre as quais:
