@@ -27,7 +27,8 @@ A *feature* escolhida foi encontrada através desta segunda via, na [*issue* #18
 
 A proposta efetuada aos responsáveis pelos projetos consistia em adicionar à descrição de cada módulo a lista de dependências deste no caso de existirem dependências, ou uma mensagem indicativa do contrário. O aspeto desejado da solução seria o seguinte:
 
-IMAGEM AQUI
+<a name="issue_goal"/>
+![Issue goal](/ESOF-docs/resources/issue1890.png)
 
 <a name="feature_components"/>
 ## Componentes que implementam a *feature* a desenvolver
