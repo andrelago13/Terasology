@@ -76,13 +76,13 @@ Página oficial do projeto: http://terasology.org/
 
 ## Contribuição do Grupo
 
-André Machado: 2 horas;
+André Machado: 18% horas;
 
-André Lago: 8 horas;
+André Lago: 40% horas;
 
-Gustavo Silva: 8 horas;
+Gustavo Silva: 40% horas;
 
-Marina Camilo: 2.5 horas;
+Marina Camilo: 12% horas;
 
 ## Identificação do Grupo
 
