@@ -68,7 +68,7 @@ Para além disso, a implementação de uma nova funcionalidade num projeto desta
 <a name="conclusion"/>
 ## Contribuição do Grupo
 
- - [André Machado](https://github.com/andremachado94) (up201202865@fe.up.pt): 6 horas
- - [André Lago](https://github.com/andrelago13) (up201303313@fe.up.pt): 8 horas
- - [Gustavo Silva](https://github.com/gtugablue) (up201304143@fe.up.pt): 8 horas
- - [Marina Camilo](https://github.com/Aniiram) (up201307722@fe.up.pt): 6 horas
+ - [André Machado](https://github.com/andremachado94) (up201202865@fe.up.pt): 21%
+ - [André Lago](https://github.com/andrelago13) (up201303313@fe.up.pt): 29%
+ - [Gustavo Silva](https://github.com/gtugablue) (up201304143@fe.up.pt): 29%
+ - [Marina Camilo](https://github.com/Aniiram) (up201307722@fe.up.pt): 21%
