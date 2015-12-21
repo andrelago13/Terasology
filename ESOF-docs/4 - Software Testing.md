@@ -131,7 +131,7 @@ O *Pull Request* foi aceite e foi feito *merge* com o *developer branch*: https:
 <a name="group_contribution"/>
 ## Contribuição do Grupo
 
- - [André Machado](https://github.com/andremachado94) (up201202865@fe.up.pt): 0 horas
- - [André Lago](https://github.com/andrelago13) (up201303313@fe.up.pt): 9 horas
- - [Gustavo Silva](https://github.com/gtugablue) (up201304143@fe.up.pt): 9 horas
- - [Marina Camilo](https://github.com/Aniiram) (up201307722@fe.up.pt): 0 horas
+ - [André Machado](https://github.com/andremachado94) (up201202865@fe.up.pt): 0%
+ - [André Lago](https://github.com/andrelago13) (up201303313@fe.up.pt): 50%
+ - [Gustavo Silva](https://github.com/gtugablue) (up201304143@fe.up.pt): 50%
+ - [Marina Camilo](https://github.com/Aniiram) (up201307722@fe.up.pt): 0%
