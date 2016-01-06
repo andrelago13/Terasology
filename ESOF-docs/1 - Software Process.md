@@ -76,13 +76,13 @@ Página oficial do projeto: http://terasology.org/
 
 ## Contribuição do Grupo
 
-André Machado: 8%;
+André Machado: 16%;
 
-André Lago: 40%;
+André Lago: 30%;
 
-Gustavo Silva: 40%;
+Gustavo Silva: 30%;
 
-Marina Camilo: 12%;
+Marina Camilo: 24%;
 
 ## Identificação do Grupo
 
